@@ -19,23 +19,23 @@ Usuarios, Profesores,  Cursos,  Publicaciones, Perfiles
 
 Estas entidades cuentan con los atributos:
 
-Usuarios : Nombre de usuario, Nombre, Apellido, Correo, Password
-Profesores : Nombre de usuario, Nombre, Apellido, Correo, Password
-Cursos: Nombre de curso
-Publicaciones : Autor, Contenido
-Perfiles: Nombre de usuario, Publicaciones, Usuarios seguidos, Cursos tomados, Profesor del curso
+* Usuarios : Nombre de usuario, Nombre, Apellido, Correo, Password
+* Profesores : Nombre de usuario, Nombre, Apellido, Correo, Password
+* Cursos: Nombre de curso
+* Publicaciones : Autor, Contenido
+* Perfiles: Nombre de usuario, Publicaciones, Usuarios seguidos, Cursos tomados, Profesor del curso
 
 Podemos ver la interacción entre :
 
-Usuarios - Perfiles : Pues los perfiles obtienen la información en base a sus usuarios, quienes pueblan la entidad (es dependiente de)
+* Usuarios - Perfiles : Pues los perfiles obtienen la información en base a sus usuarios, quienes pueblan la entidad (es dependiente de)
 
-Cursos - Profesores : Los cursos son impartidos por profesores 
+* Cursos - Profesores : Los cursos son impartidos por profesores 
 
-Usuarios - Publicaciones : Los usuarios tienen la capacidad de hacer, editar, borrar publicaciones
+* Usuarios - Publicaciones : Los usuarios tienen la capacidad de hacer, editar, borrar publicaciones
 
-Publicaciones - Perfiles : Los perfiles (entre otra información) tienen publicaciones 
+* Publicaciones - Perfiles : Los perfiles (entre otra información) tienen publicaciones 
 
-Usuarios - Usuarios : Los usuarios pueden dar follow a otros usuarios para observar sus publicaciones en la red social
+* Usuarios - Usuarios : Los usuarios pueden dar follow a otros usuarios para observar sus publicaciones en la red social
 
 
 ## Historias de usuario
