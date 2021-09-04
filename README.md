@@ -1,4 +1,4 @@
-# proyecto-modulo3
+# Proyecto: BEDU SOCIAL
 Proyecto Final de la Fase 2 Módulo 3 BEDU-Santander
 
 ## Equipo 1
@@ -10,12 +10,13 @@ Proyecto Final de la Fase 2 Módulo 3 BEDU-Santander
 * García Eulogio Lourdes Araceli
 * Juliet Guadalupe Quintero Rocha
  
-# Definicion general del proyecto #
-## Descripcion
-Nuestro proyecto consiste en desarrollar un sistema con la temática de una red social para la comunidad de Bedu. Se permite al usuario crear una cuenta para acceder a la red social, editar su perfil, dar follow a otros usuarios de manera anónima, mirar el contenido (publicaciones) realizadas por los demás usuarios a los que se les ha dado follow, mirar el perfil de los usuarios,  se permite agregar publicaciones, editar las propias publicaciones y eliminar dichas publicaciones del perfil del usuario que la ha creado, se pueden agregar cursos que el usuario ha tomado en bedu y qué profesor ha impartido el curso y un rating de la experiencia.
+# Definición general del proyecto #
+## Descripción
+Nuestro proyecto consiste en desarrollar un sistema con la temática de una red social para la comunidad de Bedu, el propósito principal es que los usuarios puedan ver los cursos que otros han tomado, y seguir a otros usuarios de su interés mediante un *follow* para ver sus publicaciones. 
+El usuario podrá crear una cuenta para acceder a la red social, editar su perfil añadiendo información como su perfil de GitHub y los cursos que ha tomado en Bedu, también puede agregar publicaciones, así como editarlas y eliminarlas de su perfil. El usuario puede dar follow a otros usuarios de manera anónima para ver el contenido (publicaciones) realizadas por los demás en su muro y puede mirar los perfiles de otros para consultar información básica y cursos tomados por dichos usuarios.
 
 ## Estructura del proyecto
-## Descripcion de entidades
+## Descripción de entidades
 Las entidades que interactúan en nuestro proyecto son :
 
 Usuarios, Publicaciones y Cursos
@@ -31,7 +32,7 @@ Podemos ver la interacción entre :
 
 * Usuarios - Cursos : Los usuarios añaden a su perfil los cursos que han tomado.
 
-* Usuarios - Publicaciones : Los usuarios tienen la capacidad de hacer, editar, borrar publicaciones.
+* Usuarios - Publicaciones : Los usuarios tienen la capacidad de hacer, editar, borrar y ver publicaciones.
 
 * Usuarios - Usuarios : Los usuarios pueden dar follow a otros usuarios para observar sus publicaciones en la red social
 
@@ -51,18 +52,25 @@ Podemos ver la interacción entre :
  12. Como usuario quiero eliminar el curso, profesor que imparte y su calificación en mi perfil
 
 ## Casos de uso
-* Registrarse
-* Agregar publicación
-* Editar publicación
-* Eliminar publicación
-* Ver perfil personal
-* Editar perfil
+* Perfil
+  - Registrarse (creación de perfil)
+  - Modificar perfil
+  - Ver perfil (propio o de otro usuario)
+  
+* Publicación
+  - Crear publicación
+  - Ver publicación (propia o de otro usuario)
+  - Editar publicación (propia)
+  - Eliminar publicación (propia)
+  
+* Curso
+  - Ver curso
+  - Agregar curso (a la lista de cursos tomados)
+  - Eliminar curso (de la lista de cursos tomados)
+ 
 * Ver muro
-* Ver perfil externo
-* Agregar amigo
-* Registrar curso, profesor y calificación del desempeño del docente
-* Editar curso, profesor y calificación del desempeño del docente
-* Eliminar registrar del curso, profesor y calificación del desempeño del docente
+* Dar follow a un amigo
+
 
 [Diagramas de casos de uso](https://app.diagrams.net/#G1Q9Vrauep4LrImQzg6h1PACLoq0dmqOqh)
   
