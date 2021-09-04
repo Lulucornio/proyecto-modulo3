@@ -1,39 +1,37 @@
 # proyecto-modulo3
-Proyecto Final de la Fase 2 Modulo 3 BEDU-Santander
+Proyecto Final de la Fase 2 Módulo 3 BEDU-Santander
 
 ## Equipo 1
  
 ### Integrantes del equipo
-[add ...]
+* Castillo Del Valle Gabriela Aideé
+* Galíndez Cortés Marco Antonio
+* Karina Lizeth Ortiz Muñoz
+* García Eulogio Lourdes Araceli
 * Juliet Guadalupe Quintero Rocha
  
 # Definicion general del proyecto #
 ## Descripcion
-Nuestro proyecto consiste en desarrollar un sistema con la temática de una red social para la comunidad de Bedu. Se permite al usuario crear una cuenta para acceder a la red social, editar su perfil, follow(amigo) con los usuarios, mirar el contenido (publicaciones) realizadas por los demás usuarios a los que se les ha dado follow, mirar el perfil de los usuarios,  se permite agregar publicaciones, editar las propias publicaciones y eliminar dichas publicaciones del perfil del usuario que la ha creado, se pueden agregar cursos que el usuario ha tomado en bedu y qué profesor ha impartido el curso y un rating de la experiencia.
+Nuestro proyecto consiste en desarrollar un sistema con la temática de una red social para la comunidad de Bedu. Se permite al usuario crear una cuenta para acceder a la red social, editar su perfil, dar follow a otros usuarios de manera anónima, mirar el contenido (publicaciones) realizadas por los demás usuarios a los que se les ha dado follow, mirar el perfil de los usuarios,  se permite agregar publicaciones, editar las propias publicaciones y eliminar dichas publicaciones del perfil del usuario que la ha creado, se pueden agregar cursos que el usuario ha tomado en bedu y qué profesor ha impartido el curso y un rating de la experiencia.
 
 ## Estructura del proyecto
 ## Descripcion de entidades
 Las entidades que interactúan en nuestro proyecto son :
 
-Usuarios, Profesores,  Cursos,  Publicaciones, Perfiles
+Usuarios, Publicaciones y Cursos
 
 Estas entidades cuentan con los atributos:
 
 * Usuarios : Nombre de usuario, Nombre, Apellido, Correo, Password
-* Profesores : Nombre de usuario, Nombre, Apellido, Correo, Password
 * Cursos: Nombre de curso
 * Publicaciones : Autor, Contenido
-* Perfiles: Nombre de usuario, Publicaciones, Usuarios seguidos, Cursos tomados, Profesor del curso
+
 
 Podemos ver la interacción entre :
 
-* Usuarios - Perfiles : Pues los perfiles obtienen la información en base a sus usuarios, quienes pueblan la entidad (es dependiente de)
+* Usuarios - Cursos : Los usuarios añaden a su perfil los cursos que han tomado.
 
-* Cursos - Profesores : Los cursos son impartidos por profesores 
-
-* Usuarios - Publicaciones : Los usuarios tienen la capacidad de hacer, editar, borrar publicaciones
-
-* Publicaciones - Perfiles : Los perfiles (entre otra información) tienen publicaciones 
+* Usuarios - Publicaciones : Los usuarios tienen la capacidad de hacer, editar, borrar publicaciones.
 
 * Usuarios - Usuarios : Los usuarios pueden dar follow a otros usuarios para observar sus publicaciones en la red social
 
