@@ -62,7 +62,7 @@ Observando el flujo del sistema en sí podemos ver la interacción entre :
  3. Como usuario quiero elegir un avatar (dentro de los que se muestran disponibles en la red social) en mi perfil
  4. Como usuario quiero agregar una descripción en mi biografía
  5. Como usuario quiero agregar cursos (de la lista) que he tomado
- 6. Como usuario quiero eliminar cursos que he tomado
+ 6. Como usuario quiero actualizar cursos que he tomado
  7. Como usuario quiero acceder para mirar el muro con las publicaciones realizadas por los demás usuarios
  8. Como usuario quiero acceder al muro para agregar una publicación 
  9. Como usuario quiero acceder al muro para buscar personas
