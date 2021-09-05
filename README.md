@@ -28,31 +28,31 @@ Usuarios, Cursos, Publicaciones
 
 Contemplamos que las entidades tienen los siguientes atributos : 
 
-Usuarios : Username, Name, LastName, Mail, Password, GithubUser, Type { }, Avatar { }, Cursos { }, Followers
-Cursos: Code, Name
-Publicaciones : Title, Description, Topic, Author
+* Usuarios : Username, Name, LastName, Mail, Password, GithubUser, Type { }, Avatar { }, Cursos { }, Followers
+* Cursos: Code, Name
+* Publicaciones : Title, Description, Topic, Author
 
 #### Interacción de entidades
 Gracias a estas entidades y las características de la API se concluye con la formación de perfiles de usuario pues si bien no es una entidad concreta si es el resultado de toda la interacción dentro del sistema y una característica esencial de las redes sociales.
 
 Observando el flujo del sistema en sí podemos ver la interacción entre :
 
-Usuarios(Entidad) - Perfiles(Resultado) : Pues los perfiles obtienen la información en base a sus usuarios, quienes pueblan la entidad (es dependiente de)
+* Usuarios(Entidad) - Perfiles(Resultado) : Pues los perfiles obtienen la información en base a sus usuarios, quienes pueblan la entidad (es dependiente de)
 
-Cursos - Usuarios : Ya que los  usuarios son quienes mencionan que cursos han tomado
+* Cursos - Usuarios : Ya que los  usuarios son quienes mencionan que cursos han tomado
 
-Usuarios - Publicaciones : Los usuarios tienen la capacidad de hacer y borrar publicaciones además de mirarlas
+* Usuarios - Publicaciones : Los usuarios tienen la capacidad de hacer y borrar publicaciones además de mirarlas
 
-Publicaciones - Perfiles : Los perfiles (entre otra información) tienen publicaciones 
+* Publicaciones - Perfiles : Los perfiles (entre otra información) tienen publicaciones 
 
-Usuarios - Usuarios : Los usuarios pueden dar follow anónimo a otros usuarios y enterarse dentro de su perfil de la información que hayan registrado como los cursos y su cuenta de Github
+* Usuarios - Usuarios : Los usuarios pueden dar follow anónimo a otros usuarios y enterarse dentro de su perfil de la información que hayan registrado como los cursos y su cuenta de Github
 
 ### Servicios
-Usuario: Get, Post, Put ( para el campo Password y algunos datos concretos)
+* Usuario: Get, Post, Put ( para el campo Password y algunos datos concretos)
 
-Cursos  : Get
+* Cursos  : Get
 
-Publicaciones : Get , Post, Delete
+* Publicaciones : Get , Post, Delete
 
 
 
