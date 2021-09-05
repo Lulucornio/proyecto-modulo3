@@ -28,9 +28,9 @@ Usuarios, Cursos, Publicaciones
 
 Contemplamos que las entidades tienen los siguientes atributos : 
 
-* Usuarios : Username, Name, LastName, Mail, Password, GithubUser, Type { }, Avatar { }, Cursos { }, Followers
-* Cursos: Code, Name
-* Publicaciones : Title, Description, Topic, Author
+* Usuarios : Id,Username, Name, LastName, Email, Password, GithubUser, Type { }, Avatar { }, Cursos { }, Followers
+* Cursos: Id, Code, Name
+* Publicaciones : Id, Title, Description, Topic, Author
 
 #### Interacción de entidades
 Gracias a estas entidades y las características de la API se concluye con la formación de perfiles de usuario pues si bien no es una entidad concreta si es el resultado de toda la interacción dentro del sistema y una característica esencial de las redes sociales.
@@ -155,6 +155,10 @@ Para utilizar nodemon, este se deberá instalar de forma global
 
 ```
 npm install -g nodemon
+```
+Ejecutar el proyecto en modo desarrollo
+```
+npm run dev
 ```
 
 
