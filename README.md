@@ -17,29 +17,43 @@ Nuestro proyecto consiste en desarrollar un sistema con la temática de una red 
 “Las redes sociales son comunidades formadas por diferentes usuarios y organizaciones que se relacionan entre sí en plataformas de Internet.” Rosario Peiró (03 de octubre, 2017).
 Con esto en mente al momento de crear nuestro proyecto hemos establecido que las funcionalidades sean características que permitan cumplir con la finalidad de estas plataformas y que a la vez nos permitan implementar una API pues van de la mano en la manera que se necesita la información para su correcto funcionamiento.
 
-El proyecto toma la temática central de la comunidad Bedu. Se permite la creación de cuenta para nuevos usuarios, ingresar información que detalla su perfil como Username, Nombre, perfil de Github, cursos tomados. [In progress...  ]
+El proyecto toma la temática central de la comunidad Bedu. Se permite la creación de cuenta para nuevos usuarios, ingresar información que detalla su perfil como Username, Nombre, perfil de Github, descripción,  cursos tomados, El usuario una vez que tiene su cuenta más adelante tiene permitido actualizar su contraseña. Se contempla la existencia de un muro en el que se mira la actividad es decir las publicaciones de la comunidad de esta red social al poder mirar todas las publicaciones existentes, las publicaciones se pueden filtrar por tema, se permite crear publicaciones y dentro del perfil del usuario que hizo su publicación eliminarlas. Además se permite la búsqueda de personas lo cual lleva a desplegar los resultados para permitir seleccionar y acceder al perfil de las personas; cuando nos encontramos en el perfil de alguien podemos mirar su información incluido los cursos que ha tomado y tenemos la opción de seguir anónimamente a dicho usuario. Cabe mencionar que algunos campos están disponibles para elegir en base a las opciones que se han predefinido siendo el caso por ejemplo el tipo de usuario, la lista de cursos, los temas de las publicaciones, el avatar del perfil.
 
 
 ## Estructura del proyecto
 ### Descripción de entidades
-Las entidades que interactúan en nuestro proyecto son :
+ Las entidades que interactúan en nuestro proyecto son :
 
-Usuarios, Publicaciones y Cursos
+Usuarios, Cursos, Publicaciones
 
-Estas entidades cuentan con los atributos:
+Contemplamos que las entidades tienen los siguientes atributos : 
 
-* Usuarios : Id, Nombre de usuario, Nombre, Apellido, Correo, Password, Usuario de Github, Tipo (estudiante o profesor), Avatar, Lista de Cursos, Cantidad de Followers.
-* Cursos: Id, Nombre del curso, Código del Curso.
-* Publicaciones : Id, Título, Descripción (contenido), Tema, Autor.
+Usuarios : Username, Name, LastName, Mail, Password, GithubUser, Type { }, Avatar { }, Cursos { }, Followers
+Cursos: Code, Name
+Publicaciones : Title, Description, Topic, Author
 
+#### Interacción de entidades
+Gracias a estas entidades y las características de la API se concluye con la formación de perfiles de usuario pues si bien no es una entidad concreta si es el resultado de toda la interacción dentro del sistema y una característica esencial de las redes sociales.
 
-Podemos ver la interacción entre :
+Observando el flujo del sistema en sí podemos ver la interacción entre :
 
-* Usuarios - Cursos : Los usuarios añaden a su perfil los cursos que han tomado.
+Usuarios(Entidad) - Perfiles(Resultado) : Pues los perfiles obtienen la información en base a sus usuarios, quienes pueblan la entidad (es dependiente de)
 
-* Usuarios - Publicaciones : Los usuarios tienen la capacidad de hacer, editar, borrar y ver publicaciones.
+Cursos - Usuarios : Ya que los  usuarios son quienes mencionan que cursos han tomado
 
-* Usuarios - Usuarios : Los usuarios pueden dar follow a otros usuarios para observar sus publicaciones en la red social
+Usuarios - Publicaciones : Los usuarios tienen la capacidad de hacer y borrar publicaciones además de mirarlas
+
+Publicaciones - Perfiles : Los perfiles (entre otra información) tienen publicaciones 
+
+Usuarios - Usuarios : Los usuarios pueden dar follow anónimo a otros usuarios y enterarse dentro de su perfil de la información que hayan registrado como los cursos y su cuenta de Github
+
+### Servicios
+Usuario: Get, Post, Put ( para el campo Password y algunos datos concretos)
+
+Cursos  : Get
+
+Publicaciones : Get , Post, Delete
+
 
 
 ### Historias de usuario
