@@ -96,6 +96,11 @@ Publicaciones : Get , Post, Delete
 * En el muro : Filtrar por tema de publicación
 * En el muro : Filtrar publicaciones por cantidad
 
+![](images/useCaseIndividuales.png)
+
+![](images/useCaseWall.png)
+
+![](images/useCaseSocialNetUpdated.png)
 
 
 [Diagramas de casos de uso](https://app.diagrams.net/#G1Q9Vrauep4LrImQzg6h1PACLoq0dmqOqh)
