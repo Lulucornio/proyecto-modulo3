@@ -77,8 +77,37 @@ Podemos ver la interacción entre :
   
 ## Herramientas empleadas
 
+En el proyecto utilizaremos Express para realizar el ruteo de la aplicación.
 
 ## Estructura de las carpetas del proyecto
+
+```bash
+
+proyecto-modulo3/
+├── config/
+├── controllers/
+│   ├── courses.js
+│   ├── posts.js
+│   └── users.js
+│
+├── models/
+│   ├── Course.js
+│   ├── Post.js
+│   └── User.js
+│
+├── Routes/
+│   ├── courses.js
+│   ├── index.js
+│   ├── posts.js
+│   └── users.js
+│
+├── app.js
+├── package-lock.json
+├── package.json
+├── .gitignore
+└── README.md
+
+```
 
 
 ## Instalación de dependencias
