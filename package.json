@@ -1,0 +1,27 @@
+{
+  "name": "proyecto-modulo3",
+  "version": "1.0.0",
+  "description": "Proyecto Final de la Fase 2 Módulo 3 BEDU-Santander",
+  "main": "app.js",
+  "scripts": {
+    "start": "node ./app.js",
+    "dev": "nodemon ./app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lulucornio/proyecto-modulo3.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Lulucornio/proyecto-modulo3/issues"
+  },
+  "homepage": "https://github.com/Lulucornio/proyecto-modulo3#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1"
+  }
+}
