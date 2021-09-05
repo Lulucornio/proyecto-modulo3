@@ -16,7 +16,7 @@ Nuestro proyecto consiste en desarrollar un sistema con la temática de una red 
 El usuario podrá crear una cuenta para acceder a la red social, editar su perfil añadiendo información como su perfil de GitHub y los cursos que ha tomado en Bedu, también puede agregar publicaciones, así como editarlas y eliminarlas de su perfil. El usuario puede dar follow a otros usuarios de manera anónima para ver el contenido (publicaciones) realizadas por los demás en su muro y puede mirar los perfiles de otros para consultar información básica y cursos tomados por dichos usuarios.
 
 ## Estructura del proyecto
-## Descripción de entidades
+### Descripción de entidades
 Las entidades que interactúan en nuestro proyecto son :
 
 Usuarios, Publicaciones y Cursos
@@ -37,7 +37,7 @@ Podemos ver la interacción entre :
 * Usuarios - Usuarios : Los usuarios pueden dar follow a otros usuarios para observar sus publicaciones en la red social
 
 
-## Historias de usuario
+### Historias de usuario
  1. Como usuario quiero registrarme en la red social para tener un perfil y acceder         
  2. Como usuario quiero acceder para mirar el muro con las publicaciones realizadas por los demás usuarios
  3. Como usuario quiero ir a mi perfil para subir una publicación
@@ -51,7 +51,7 @@ Podemos ver la interacción entre :
  11. Como usuario quiero editar el curso, profesor que imparte y su calificación en mi perfil
  12. Como usuario quiero eliminar el curso, profesor que imparte y su calificación en mi perfil
 
-## Casos de uso
+### Casos de uso
 * Perfil
   - Registrarse (creación de perfil)
   - Modificar perfil
@@ -119,13 +119,11 @@ proyecto-modulo3/
 Para la instalación de las principales dependencias se deberá ejecutar el siguiente comando en la carpeta raíz del proyecto
 ```
 npm i
-
 ```
 Para utilizar nodemon, este se deberá instalar de forma global
 
 ```
 npm install -g nodemon
-
 ```
 
 
