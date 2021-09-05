@@ -4,10 +4,10 @@ Proyecto Final de la Fase 2 Módulo 3 BEDU-Santander
 ## Equipo 1
  
 ### Integrantes del equipo
-* Castillo Del Valle Gabriela Aideé
-* Galíndez Cortés Marco Antonio
+* Gabriela Aideé Castillo Del Valle 
+* Marco Antonio Galíndez Cortés 
 * Karina Lizeth Ortiz Muñoz
-* García Eulogio Lourdes Araceli
+* Lourdes Araceli García Eulogio 
 * Juliet Guadalupe Quintero Rocha
  
 # Definición general del proyecto #
@@ -23,9 +23,9 @@ Usuarios, Publicaciones y Cursos
 
 Estas entidades cuentan con los atributos:
 
-* Usuarios : Nombre de usuario, Nombre, Apellido, Correo, Password
-* Cursos: Nombre de curso
-* Publicaciones : Autor, Contenido
+* Usuarios : Id, Nombre de usuario, Nombre, Apellido, Correo, Password, Usuario de Github, Tipo (estudiante o profesor), Avatar, Lista de Cursos, Cantidad de Followers.
+* Cursos: Id, Nombre del curso, Código del Curso.
+* Publicaciones : Id, Título, Descripción (contenido), Tema, Autor.
 
 
 Podemos ver la interacción entre :
@@ -78,6 +78,10 @@ Podemos ver la interacción entre :
 ## Herramientas empleadas
 
 En el proyecto utilizaremos Express para realizar el ruteo de la aplicación.
+Se hará uso de body-parser para facilitar a Express leer el cuerpo de la petición.
+Otra herramienta a utilizar es nodemon, ya que actualizará automáticamente el servidor a medida que vamos realizando cambios.
+
+Para la base de datos se utilizará MongoDB.
 
 ## Estructura de las carpetas del proyecto
 
@@ -95,7 +99,7 @@ proyecto-modulo3/
 │   ├── Post.js
 │   └── User.js
 │
-├── Routes/
+├── routes/
 │   ├── courses.js
 │   ├── index.js
 │   ├── posts.js
@@ -111,4 +115,18 @@ proyecto-modulo3/
 
 
 ## Instalación de dependencias
-  
+
+Para la instalación de las principales dependencias se deberá ejecutar el siguiente comando en la carpeta raíz del proyecto
+```
+npm i
+
+```
+Para utilizar nodemon, este se deberá instalar de forma global
+
+```
+npm install -g nodemon
+
+```
+
+
+
