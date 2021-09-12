@@ -6,7 +6,6 @@
   "scripts": {
     "start": "webpack serve --mode development --open",
     "build": "webpack --mode production",
-    "start": "node ./app.js",
     "dev": "nodemon ./app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -23,15 +22,23 @@
   "homepage": "https://github.com/Lulucornio/proyecto-modulo3#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "bootstrap": "^5.1.1",
     "cors": "^2.8.5",
     "express": "^4.17.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.15.5",
+    "@babel/preset-env": "^7.15.6",
+    "babel-loader": "^8.2.2",
     "css-loader": "^6.2.0",
+    "html-loader": "^2.1.2",
     "html-webpack-plugin": "^5.3.2",
+    "sass": "^1.38.2",
+    "sass-loader": "^12.1.0",
     "style-loader": "^3.2.1",
     "webpack": "^5.52.1",
     "webpack-cli": "^4.8.0",
-    "webpack-dev-server": "^4.2.0"
+    "webpack-dev-server": "^3.11.2",
+    "webpack-plugin": "^1.0.5"
   }
 }
