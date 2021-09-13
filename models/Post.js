@@ -1,13 +1,23 @@
+const mongoose = require('mongoose')
+const PostSchema = new mongoose.Schema({
 
-class Post {
-    constructor(id, title, description, topic, author) {
-      this.id = id;
-      this.title = title;
-      this.description = description;
-      this.topic = topic;
-      this.author = author;
-    }
-  }
+  title: {type: String, require: true}, 
+  description: {type: String, require: true}, // Javi recomendó que la longitud se controle en el Frontend
+  topic: {type: String, require: true, enum: ['JavaScript', 'Backend', 'Webpack', 'HTML']}, // Definir si es libre o no
+  author: {type: mongoose.Schema.Types.ObjectId, ref: 'User'}
 
-module.exports = Post;
-  
+}, {timestamps: true, collection: 'posts'})
+
+PostSchema.methods.publicData = () => {
+	return{
+		id: this.id,
+		title: this.title,
+		description: this.description,
+		topic: this.topic,
+		author: this.author,
+	}
+
+}
+
+
+mongoose.model('Post', PostSchema);

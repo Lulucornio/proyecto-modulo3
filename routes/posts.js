@@ -2,13 +2,14 @@ const router = require('express').Router();
 
 const {
     createPost,
-    getAllPosts,
+    getPost,
     getUserPost,
     deletePost
 } = require('../controllers/posts');
 
 
-router.get('/', getAllPosts);
+router.get('/', getPost);
+router.get('/:id', getPost);
 router.get('/:author', getUserPost);
 router.post('/', createPost);
 router.delete('/:id', deletePost)

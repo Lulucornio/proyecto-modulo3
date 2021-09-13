@@ -1,32 +1,52 @@
-const Post = require('../models/Post');
+/* */
+const mongoose = require('mongoose');
+const Post = mongoose.model("Post");
 
-function createPost(req, res) {
-    let post = new Post();
-    res.status(200).send(post);
+//
+function createPost(req, res, next){ // OK
+
+    let post = new Post(req.body);
+
+    post.save().then( (post) =>{
+        res.status(200).send(post);
+    }).catch(next);
 }
 
-//For getting all posts in feed
-function getAllPosts(req, res) {
-  
-    res.send([]);
-}
-//For getting a list of posts from a specific user
-function getUserPost(req, res) {
 
-    res.send([]);
+function getPost(req, res, next){ //OK
+    if(req.params.id){ 
+        Post.findById(req.params.id) // For getting a specific post to delete it 
+        .then( (post) => {
+            res.send(post)
+        })
+        .catch(next)
+    } else {
+        Post.find() // This is for the complete feed ? {Would be necessary set a limit} 
+        .then((posts)=>{ res.send(posts)})
+        .catch(next)
+    }
 }
+
+
+function getUserPost(req, res, next){
+
+}
+
+
+function deletePost(req, res, next){ //OK
+    Post.findOneAndDelete({_id:req.params.id})
+    .then((response)=>{ res.status(200).send('Post eliminado correctamente')
+    })
+    .catch(next)
     
-function deletePost(req, res) {
-
-    res.status(200).send(`Post ${req.params.id} eliminado`);    
 }
-  
-
 // Won't be possible to update a post, it should be deleted
+
+
 
 module.exports = {
     createPost,
-    getAllPosts,
-    getUserPost,
+    getPost,
+    getUserPost, //Aggregation 
     deletePost
 }
