@@ -12,7 +12,7 @@ const {
 
 router.get('/', getPost);
 router.get('/list/:author', getUserPost);
-router.get('/topics/:topic', filterPost);
+router.get('/topics', filterPost);
 router.get('/:id', getPost);
 router.post('/', createPost);
 router.delete('/:id', deletePost)

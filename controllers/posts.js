@@ -88,23 +88,31 @@ function updatePost(req, res, next){ // OK
 }
 
 
-// Topic Filter
+// Topic Filter, Múltiple filter, requires an array in body with the list of topics to show
 function filterPost(req, res, next){ //OK
 
-    let topic = req.params.topic;
+    let topics = req.body;
 
     Post.aggregate([
         {
             '$match': {
-                'topic': topic
+                'topic' : { '$in' : topics.topics}
             }
-        }
+        },
+
+        {
+            '$limit': topics.limit
+          }
     ])
     .then(r => {
         res.status(200).send(r)
     })
     .catch(next);
 }
+
+// For multiple topics could be possible to use the pipeline function in 
+
+
 
 // Specific Qty of post
 // Esto sería parte del front???
@@ -118,3 +126,18 @@ module.exports = {
     updatePost,
     filterPost
 }
+
+
+
+/*
+Normal creation of a user:
+
+{
+	"title": "This post is created by another user",
+	"description": "Test post",
+	"topic": "HTML",
+	"author": "6147eed99e437ce2098a5f88"
+}
+
+
+*/
