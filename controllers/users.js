@@ -1,7 +1,7 @@
 const mongoose = require("mongoose")
 const User = mongoose.model("users")
 
-function createUser(req,res){
+function createUser(req,res,next){
     var user = new User(req.body)
     // user.estado = 'disponible'
     user.save().then(user => {
