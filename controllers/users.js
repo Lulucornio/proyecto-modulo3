@@ -31,7 +31,7 @@ function createUser(req,res,next){ // function to create user, it will iterate a
 // }
 
 module.exports={ // defining the functions we have
-    createUser,
+    createUser/* ,
     getUser,
-    updateUser
+    updateUser */
 }

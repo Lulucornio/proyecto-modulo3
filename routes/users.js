@@ -1,13 +1,13 @@
 const router=require('express').Router()
 
 const{
-    createUser,
+    createUser/* ,
     getUser,
-    updateUser
+    updateUser */
 }=require('../controllers/users')
 
-router.get('/',getUser)
+//router.get('/',getUser)
 router.post('/',createUser)
-router.put('/:id',updateUser)
+//router.put('/:id',updateUser)
 
 module.exports=router;
