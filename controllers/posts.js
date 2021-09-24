@@ -17,13 +17,13 @@ function createPost(req, res, next){ // OK
 function getPost(req, res, next){ //OK
 
     if(req.params.id){ 
-        Post.findById(req.params.id) // For getting a specific post to delete it 
+        Post.findById(req.params.id) 
         .then( (post) => {
             res.send(post)
         })
         .catch(next)
     } else {
-        Post.find() // This is for the complete feed ? {Would be necessary set a limit} 
+        Post.find() 
         .then((posts)=>{ res.send(posts)})
         .catch(next)
     }
@@ -87,35 +87,31 @@ function updatePost(req, res, next){ // OK
     .catch(next);
 }
 
+//This won't apply for insensitive cases, so using the front end that would be controlled
 
-// Topic Filter, Múltiple filter, requires an array in body with the list of topics to show
 function filterPost(req, res, next){ //OK
 
-    let topics = req.body;
+    const query = req.query;
+    const topics = query.topics.split(',')
 
     Post.aggregate([
         {
             '$match': {
-                'topic' : { '$in' : topics.topics}
+                'topic' : { '$in' : topics}
             }
         },
 
         {
-            '$limit': topics.limit
+            '$limit': parseInt(query.limit)
           }
     ])
     .then(r => {
         res.status(200).send(r)
+        
     })
     .catch(next);
 }
 
-// For multiple topics could be possible to use the pipeline function in 
-
-
-
-// Specific Qty of post
-// Esto sería parte del front???
 
 
 module.exports = {
@@ -129,15 +125,5 @@ module.exports = {
 
 
 
-/*
-Normal creation of a user:
-
-{
-	"title": "This post is created by another user",
-	"description": "Test post",
-	"topic": "HTML",
-	"author": "6147eed99e437ce2098a5f88"
-}
 
 
-*/
