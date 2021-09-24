@@ -1,54 +1,3 @@
-// class User{
-//     constructor(id,username,name,lastName,email,password,githubUser,type,avatar,cursos,followers){
-//         this.id=id,
-//         this.username=username,
-//         this.name=name,
-//         this.lastName=lastName,
-//         this.email=email,
-//         this.password=password,
-//         this.githubUser=githubUser,
-//         this.type=type,
-//         this.avatar=avatar,
-//         this.cursos=cursos,
-//         this.followers=followers
-//     }
-// }
-
-// module.exports=User
-
-// FROM HERE
-
-// // Usuario.js
-// /** Clase que representa a un usuario de la plataforma*/
-// class Usuario {
-//     constructor(id, username, nombre, apellido, email, password, tipo) {
-//       this.id = id;
-//       this.username = username;
-//       this.nombre = nombre;
-//       this.apellido = apellido;
-//       this.email = email;
-//       this.password = password;
-//       this.tipo = tipo; // tipo normal o anunciante
-//     }
-//   }
-//   module.exports = Usuario;
-
-// Usuario.js
-/** Clase que representa a un usuario de la plataforma*/
-
-// class Usuario {
-//     constructor(id, username, nombre, apellido, email, password, tipo) {
-//       this.id = id;
-//       this.username = username;
-//       this.nombre = nombre;
-//       this.apellido = apellido;
-//       this.email = email;
-//       this.password = password;
-//       this.tipo = tipo; // tipo normal o anunciante
-//     }
-//   }
-
-//   module.exports = Usuario;
 
 const mongoose = require("mongoose");
 
@@ -56,9 +5,9 @@ const UserSchema = new mongoose.Schema(
   {
     username: {
       type: String,
-      // unique: true,
-      required: [true, "Este campo es requerido"],
-      index: true,
+      unique: true, // must be unique so we wont have duplicates
+      required: [true, "Este campo es requerido"], // gotta have a username
+      index: true, // certain fields have index set to true to make querys faster and access this  data with ease
     },
     name: {
       type: String,
@@ -70,25 +19,23 @@ const UserSchema = new mongoose.Schema(
     },
     email: {
       type: String,
-      // unique: true,
+       unique: true,
       required: [true, "Este campo es requerido"],
-      match: [/\S+@\S+\.\S+/, "es inválido"],
+      match: [/\S+@\S+\.\S+/, "es inválido"], // using regex we can make sure the email follows a correct format
       index: true,
     },
     githubUser: {
       type: String,
-      // unique: true,
+      unique: true,
     },
 
-    password: { type: String, required: "Este campo es requerido" },
+    password: { type: String, required: "Este campo es requerido" }, // Must have a password
     hash: String, //este campo se utilizará para la sesión
     salt: String, //este campo se utilizará para la sesión
     
     typeA: { type: String, enum: ["Profesor", "Alumno"] },
-    // avatar:
-    //  { type: String, enum: ["Perro", "Gato", "Otro"] },
-
-    avatar : {
+  
+    avatar : {  // the avatar is defined by the type that has been set, you dont need to specify it using the post method, it will automatically set it to teacher or student
       type: String,
       default: function() {
          if (this.typeA === "Profesor") {
@@ -98,16 +45,16 @@ const UserSchema = new mongoose.Schema(
          }
         }
     },
-    courses: {type: [mongoose.Schema.Types.ObjectId], ref:'courses'},
-    // courses: {type: String, require: true, enum: ['FS JavaScript', 'Diseno UX/UI', 'UX and Front End', 'Seguridad Informatica Aplicada', 'Metodologias Agiles', 'Marketing Digital', 'Ingles de Negocios Intermedio', 'FS Python', 'Finanzas Empresariales']}, //  
-    followers: Number,
-    bioDescription: { type: String , maxLength: 350},
-    // }, { timestamps: true, collection: 'usuarios' });
+    courses: {type: [mongoose.Schema.Types.ObjectId], ref:'courses'}, // courses is obtained from the DB where our courses have been previously defined and we can set multiple courses to one user with the course ID
+    
+    followers: Number, // accurate field type definition 
+    bioDescription: { type: String , maxLength: 350}, // limiting the lenght of the description , although this could also be defined with front end
+   
   },
   { collection: "users", timestamps: true }
 );
 
-UserSchema.methods.publicData = () => {
+UserSchema.methods.publicData = () => {  // here we get and set our fields 
   return {
     id: this.id,
     username: this.username,
