@@ -98,7 +98,7 @@ const UserSchema = new mongoose.Schema(
          }
         }
     },
-    courses: {type: mongoose.Schema.Types.ObjectId, ref:'courses'},
+    courses: {type: [mongoose.Schema.Types.ObjectId], ref:'courses'},
     // courses: {type: String, require: true, enum: ['FS JavaScript', 'Diseno UX/UI', 'UX and Front End', 'Seguridad Informatica Aplicada', 'Metodologias Agiles', 'Marketing Digital', 'Ingles de Negocios Intermedio', 'FS Python', 'Finanzas Empresariales']}, //  
     followers: Number,
     bioDescription: { type: String , maxLength: 350},
