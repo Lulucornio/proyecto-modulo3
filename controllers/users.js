@@ -1,9 +1,9 @@
 const mongoose = require("mongoose")
 const User = mongoose.model("users")
 
-function createUser(req,res,next){
+function createUser(req,res,next){ // function to create user, it will iterate and save if it detects an error it will show a message
     var user = new User(req.body)
-    // user.estado = 'disponible'
+ 
     user.save().then(user => {
       res.status(201).send(user)
     }).catch(next)
@@ -30,7 +30,7 @@ function createUser(req,res,next){
 //     res.send(user)
 // }
 
-module.exports={
+module.exports={ // defining the functions we have
     createUser,
     getUser,
     updateUser
