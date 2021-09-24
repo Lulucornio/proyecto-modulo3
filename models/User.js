@@ -1,5 +1,3 @@
- 
-
 // class User{
 //     constructor(id,username,name,lastName,email,password,githubUser,type,avatar,cursos,followers){
 //         this.id=id,
@@ -19,7 +17,38 @@
 // module.exports=User
 
 // FROM HERE
- 
+
+// // Usuario.js
+// /** Clase que representa a un usuario de la plataforma*/
+// class Usuario {
+//     constructor(id, username, nombre, apellido, email, password, tipo) {
+//       this.id = id;
+//       this.username = username;
+//       this.nombre = nombre;
+//       this.apellido = apellido;
+//       this.email = email;
+//       this.password = password;
+//       this.tipo = tipo; // tipo normal o anunciante
+//     }
+//   }
+//   module.exports = Usuario;
+
+// Usuario.js
+/** Clase que representa a un usuario de la plataforma*/
+
+// class Usuario {
+//     constructor(id, username, nombre, apellido, email, password, tipo) {
+//       this.id = id;
+//       this.username = username;
+//       this.nombre = nombre;
+//       this.apellido = apellido;
+//       this.email = email;
+//       this.password = password;
+//       this.tipo = tipo; // tipo normal o anunciante
+//     }
+//   }
+
+//   module.exports = Usuario;
 
 const mongoose = require("mongoose");
 
@@ -55,22 +84,25 @@ const UserSchema = new mongoose.Schema(
     hash: String, //este campo se utilizará para la sesión
     salt: String, //este campo se utilizará para la sesión
     
-    type: { type: String, enum: ["Profesor", "Alumno"] },
-  
+    typeA: { type: String, enum: ["Profesor", "Alumno"] },
+    // avatar:
+    //  { type: String, enum: ["Perro", "Gato", "Otro"] },
+
     avatar : {
       type: String,
       default: function() {
-         if (this.type === "Profesor") {
+         if (this.typeA === "Profesor") {
             return "https://github.com/IdrisDW/proyecto-modulo3/raw/desarrollo/apiImages/teacher.png";
          } else {
             return "https://github.com/IdrisDW/proyecto-modulo3/raw/desarrollo/apiImages/student.png";
          }
         }
     },
-    courses: {type: mongoose.Schema.Types.ObjectId, ref:'Course'},
+    courses: {type: mongoose.Schema.Types.ObjectId, ref:'courses'},
+    // courses: {type: String, require: true, enum: ['FS JavaScript', 'Diseno UX/UI', 'UX and Front End', 'Seguridad Informatica Aplicada', 'Metodologias Agiles', 'Marketing Digital', 'Ingles de Negocios Intermedio', 'FS Python', 'Finanzas Empresariales']}, //  
     followers: Number,
     bioDescription: { type: String , maxLength: 350},
-   
+    // }, { timestamps: true, collection: 'usuarios' });
   },
   { collection: "users", timestamps: true }
 );
