@@ -1,5 +1,6 @@
 const Course = require('../models/Course');
-
+/* const mongoose = require("mongoose")
+const Course = mongoose.model("Course") */
 function getCourse(req, res) {
     res.send([]);
 }

@@ -40,7 +40,6 @@ PostSchema.methods.publicData = function () {
 		topic: this.topic,
 		author: this.author
 	}
-
 }
 
 mongoose.model('Post', PostSchema);
