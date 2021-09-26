@@ -25,23 +25,40 @@ function getUser(req,res,next){
   }
 }
 
-/* function getUser(req,res,next){
-   User.findById(req.params.id) 
-      .then(user =>{
-        return res.status(200).send(user)
-      }).catch(next)
-} */
+function updateUser(req, res, next) { 
+  User.findById(req.params.id)
+      .then(user => {
+        // Allowed properties to be updated: name, lastname, githubHuser,courses, bioDescription
+          if (!user) { return res.sendStatus(404); }
+          let newInfo = req.body
+          if (typeof newInfo.name !== "undefined")
+              user.name = newInfo.name
+          if (typeof newInfo.lastname !== "undefined")
+              user.lastname = newInfo.lastname
+          if (typeof newInfo.githubUser !== 'undefined')
+              user.githubUser = newInfo.githubUser
+          if (typeof newInfo.courses !== 'undefined')
+              user.courses = newInfo.courses
+          if (typeof newInfo.bioDescription !== 'undefined')
+              user.bioDescription = newInfo.bioDescription
+          user.save()
+              .then(updated => {
+                  res.status(201).json(updated.publicData())
+              })
+              .catch(next)
+      })
+      .catch(next)
+}
 
-
-// function updateUser(req,res){
-//     var user=new User(req.params.id,'tomato1','Tomas','Cruz','tomas@mail.com','123asd','tomatoe','alumno','url',{code:1, name: 'Javascript'},95)
-//     var updated=req.body
-//     user={...user,...updated}
-//     res.send(user)
-// }
+function deleteUser(req, res, next) {
+  User.findOneAndDelete({ _id:req.params.id})
+      .then(r => { res.status(200).send("El usuario se ha eliminado") })
+      .catch(next)
+}
 
 module.exports={ // defining the functions we have
     createUser,
-    getUser/*,
-    updateUser */
+    getUser,
+    deleteUser,
+    updateUser    
 }

@@ -67,7 +67,7 @@ function updatePost(req, res, next){ // OK
     Post.findById(req.params.id)
     .then(post => {
         if(!post){
-            return res.send(401) 
+            return res.sendStatus(401) 
         }
 
         let newData = req.body
