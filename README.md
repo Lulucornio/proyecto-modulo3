@@ -122,6 +122,7 @@ En el proyecto utilizaremos las siguientes dependencias:
 Durante el desarrollo se utilizó **Nodemon**, ya que actualiza automáticamente el servidor a medida que vamos realizando cambios.
 
 ## Enlace a la API en Heroku
+[Bedu Social](https://bedusocial.herokuapp.com/v1)
 
 ## Swagger
 
