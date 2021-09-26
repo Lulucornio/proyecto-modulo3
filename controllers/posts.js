@@ -5,36 +5,58 @@ const  ObjectId = require('mongodb').ObjectId;
 
 function createPost(req, res, next){ // OK
     let post = new Post(req.body);
-    post.save().then( (post) =>{
+    post.save().then((post) =>{
         res.status(200).send(post);
     }).catch(next);
 }
 
 function getPost(req, res, next){ //OK
-    const query = req.query;
-    if(req.params.id){ 
-        Post.findById(req.params.id) 
-        .then( (post) => {
-            res.send(post)
+    
+    if (req.params.id){ // Case for an Specific Id
+        Post.findById(req.params.id)
+        .then((post) => {
+            res.send(post);
+
         })
-        .catch(next)
-    } else {
-        if(query){
-            Post.aggregate([       
-                {
-                    '$limit': parseInt(query.limit)
+        .catch(next);
+    }
+    else {
+        const query = req.query;
+        
+        if (query.limit || query.topics){ // Filter will be applied, sensitive cases on topics
+            
+            const limit = query.limit ? parseInt(query.limit) : query.limit;
+            const topics = query.topics ? query.topics.split(',') : query.topics;
+            let aggregation = [];
+
+            const matchTopics = {
+                '$match': {
+                    'topic' : { '$in' : topics}
                 }
-            ]).then(r => {
+            };
+            
+            const setLimit = {
+                '$limit': limit
+            };
+
+            aggregation = topics && limit ? [matchTopics, setLimit] : topics ? [matchTopics] : [setLimit];
+            
+            Post.aggregate(aggregation)
+            .then(r => {
                 res.status(200).send(r)
             })
             .catch(next);
-        }else{
+
+        }
+        else { // All Posts (no filter)
             Post.find() 
             .then((posts)=>{ res.send(posts)})
-            .catch(next)
+            .catch(next);
+
         }
-     
+
     }
+    
 }
 
 
@@ -43,7 +65,7 @@ function getUserPost(req, res, next){ // OK
     Post.aggregate([
         {
             '$match': {
-                'author': new ObjectId(`${user}`) // Revisar bien para qué sirve el new
+                'author': new ObjectId(`${user}`) 
             }
         }
     ])
@@ -62,7 +84,7 @@ function deletePost(req, res, next){ //OK
 }
 
 
-// Update functionality added (Id and Author can not be updated) 
+// Update functionality added (Id and Author cannot be updated) 
 function updatePost(req, res, next){ // OK
     Post.findById(req.params.id)
     .then(post => {
@@ -91,37 +113,13 @@ function updatePost(req, res, next){ // OK
     .catch(next);
 }
 
-//This won't apply for insensitive cases, so using the front end that would be controlled
-
-function filterPost(req, res, next){ //OK    //Se sugiere remover "limit", se ha agregado en el servicio GetPosts
-    const query = req.query;
-    const topics = query.topics.split(',')
-    Post.aggregate([
-        {
-            '$match': {
-                'topic' : { '$in' : topics}
-            }
-        },
-
-        {
-            '$limit': parseInt(query.limit)
-        }
-    ])
-    .then(r => {
-        res.status(200).send(r)
-        
-    })
-    .catch(next);
-}
-
 
 module.exports = {
     createPost,
     getPost,
     getUserPost, 
     deletePost,
-    updatePost,
-    filterPost
+    updatePost
 }
 
 

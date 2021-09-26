@@ -5,15 +5,13 @@ const {
     getPost,
     getUserPost,
     deletePost,
-    updatePost,
-    filterPost
+    updatePost
 } = require('../controllers/posts');
 
 
 router.get('/', getPost);
-router.get('/list/:author', getUserPost);
-router.get('/topics', filterPost);
 router.get('/:id', getPost);
+router.get('/list/:author', getUserPost);
 router.post('/', createPost);
 router.delete('/:id', deletePost)
 router.put('/:id', updatePost)
