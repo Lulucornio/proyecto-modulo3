@@ -6,5 +6,7 @@ const {
 
 
 router.get('/', getCourse);
+router.get('/:id', getCourse);
+
 
 module.exports = router;
