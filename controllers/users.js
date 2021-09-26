@@ -51,7 +51,7 @@ function getUserbyField(req, res, next){
                 User.aggregate([       
                     {
                         '$match': {
-                            'name' : name
+                            'name' : { '$regex' : name, $options: '-i' }
                         }
                     }
                 ]).then(r => {res.status(200).send(r)}).catch(next);
@@ -60,7 +60,7 @@ function getUserbyField(req, res, next){
                 User.aggregate([       
                     {
                         '$match': {
-                            'lastName' : lastName
+                            'lastName' : { '$regex' : lastName, $options: '-i' }
                         }
                     }
                 ]).then(r => {res.status(200).send(r)}).catch(next);
