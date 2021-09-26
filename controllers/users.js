@@ -9,23 +9,6 @@ function createUser(req,res,next){ // function to create user, it will iterate a
     }).catch(next)
 }
 
-/* function getUser(req,res,next){
-  if(req.params.id){
-    User.findById(req.params.id) 
-      .then(user =>{
-          res.send(user)
-      })
-      .catch(next)
-  }else{
-    User.find()
-      .then(user=>{
-          res.send(user)
-      })
-      .catch(next)
-  }
-}
- */
-
 function getUser(req, res, next){ //OK
     if(req.params.id){
         User.findById(req.params.id) 
@@ -40,7 +23,7 @@ function getUser(req, res, next){ //OK
 }
 
 
-function getUserbyField(req, res, next){
+function getUserbyField(req, res, next){  //get user by name, lastname, email or username
     const query = req.query;
      if(query) {
         const name = query.name
@@ -85,11 +68,6 @@ function getUserbyField(req, res, next){
             }
         }
 }
-
-
-
-
-
 
 
 function updateUser(req, res, next) { 
