@@ -31,16 +31,22 @@ function updateUser(req, res, next) {
         // Allowed properties to be updated: name, lastname, githubHuser,courses, bioDescription
           if (!user) { return res.sendStatus(404); }
           let newInfo = req.body
-          if (typeof newInfo.name !== "undefined")
-              user.name = newInfo.name
-          if (typeof newInfo.lastName !== "undefined")
-              user.lastname = newInfo.lastName
-          if (typeof newInfo.githubUser !== 'undefined')
-              user.githubUser = newInfo.githubUser
-          if (typeof newInfo.courses !== 'undefined')
-              user.courses = newInfo.courses
-          if (typeof newInfo.bioDescription !== 'undefined')
-              user.bioDescription = newInfo.bioDescription
+          if (typeof newInfo.followers !== "undefined"){
+            user.followers = newInfo.followers
+          }else if(typeof newInfo.password !== "undefined"){
+            user.password = newInfo.password
+          }else{
+            if (typeof newInfo.name !== "undefined")
+                user.name = newInfo.name
+            if (typeof newInfo.lastName !== "undefined")
+                user.lastname = newInfo.lastName
+            if (typeof newInfo.githubUser !== 'undefined')
+                user.githubUser = newInfo.githubUser
+            if (typeof newInfo.courses !== 'undefined')
+                user.courses = newInfo.courses
+            if (typeof newInfo.bioDescription !== 'undefined')
+                user.bioDescription = newInfo.bioDescription
+          }
           user.save()
               .then(updated => {
                   res.status(201).json(updated.publicData())

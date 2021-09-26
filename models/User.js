@@ -53,8 +53,8 @@ UserSchema.methods.publicData = function () {  // here we get and set our fields
   return {
     id: this.id,
     username: this.username,
-    name: this.nombre,
-    lastName: this.apellido,
+    name: this.name,
+    lastName: this.lastName,
     email: this.email,
     githubUser: this.githubUser,
     password: this.password,
