@@ -49,7 +49,7 @@ const UserSchema = new mongoose.Schema(
   { collection: "users", timestamps: true }
 );
 
-UserSchema.methods.publicData = () => {  // here we get and set our fields 
+UserSchema.methods.publicData = function () {  // here we get and set our fields 
   return {
     id: this.id,
     username: this.username,

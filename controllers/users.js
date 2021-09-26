@@ -33,8 +33,8 @@ function updateUser(req, res, next) {
           let newInfo = req.body
           if (typeof newInfo.name !== "undefined")
               user.name = newInfo.name
-          if (typeof newInfo.lastname !== "undefined")
-              user.lastname = newInfo.lastname
+          if (typeof newInfo.lastName !== "undefined")
+              user.lastname = newInfo.lastName
           if (typeof newInfo.githubUser !== 'undefined')
               user.githubUser = newInfo.githubUser
           if (typeof newInfo.courses !== 'undefined')
