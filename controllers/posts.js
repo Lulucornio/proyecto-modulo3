@@ -3,19 +3,15 @@ const mongoose = require('mongoose');
 const Post = mongoose.model("Post");
 const  ObjectId = require('mongodb').ObjectId;
 
-
 function createPost(req, res, next){ // OK
-
     let post = new Post(req.body);
-
     post.save().then( (post) =>{
         res.status(200).send(post);
     }).catch(next);
 }
 
-
 function getPost(req, res, next){ //OK
-
+    const query = req.query;
     if(req.params.id){ 
         Post.findById(req.params.id) 
         .then( (post) => {
@@ -23,17 +19,27 @@ function getPost(req, res, next){ //OK
         })
         .catch(next)
     } else {
-        Post.find() 
-        .then((posts)=>{ res.send(posts)})
-        .catch(next)
+        if(query){
+            Post.aggregate([       
+                {
+                    '$limit': parseInt(query.limit)
+                }
+            ]).then(r => {
+                res.status(200).send(r)
+            })
+            .catch(next);
+        }else{
+            Post.find() 
+            .then((posts)=>{ res.send(posts)})
+            .catch(next)
+        }
+     
     }
 }
 
 
 function getUserPost(req, res, next){ // OK
-
     let user = req.params.author;
-
     Post.aggregate([
         {
             '$match': {
@@ -49,7 +55,6 @@ function getUserPost(req, res, next){ // OK
 
 
 function deletePost(req, res, next){ //OK
-
     Post.findOneAndDelete({_id:req.params.id})
     .then((response)=>{ res.status(200).send('Post eliminado correctamente')
     })
@@ -57,9 +62,8 @@ function deletePost(req, res, next){ //OK
 }
 
 
-// Update functionality added (Id and Author cannot be updated) 
+// Update functionality added (Id and Author can not be updated) 
 function updatePost(req, res, next){ // OK
-
     Post.findById(req.params.id)
     .then(post => {
         if(!post){
@@ -89,11 +93,9 @@ function updatePost(req, res, next){ // OK
 
 //This won't apply for insensitive cases, so using the front end that would be controlled
 
-function filterPost(req, res, next){ //OK
-
+function filterPost(req, res, next){ //OK    //Se sugiere remover "limit", se ha agregado en el servicio GetPosts
     const query = req.query;
     const topics = query.topics.split(',')
-
     Post.aggregate([
         {
             '$match': {
@@ -103,7 +105,7 @@ function filterPost(req, res, next){ //OK
 
         {
             '$limit': parseInt(query.limit)
-          }
+        }
     ])
     .then(r => {
         res.status(200).send(r)
@@ -111,7 +113,6 @@ function filterPost(req, res, next){ //OK
     })
     .catch(next);
 }
-
 
 
 module.exports = {
