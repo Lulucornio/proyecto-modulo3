@@ -125,6 +125,10 @@ Durante el desarrollo se utilizó **Nodemon**, ya que actualiza automáticamente
 [Bedu Social](https://bedusocial.herokuapp.com/v1)
 
 ## Swagger
+[Documentación de la API](https://app.swaggerhub.com/apis-docs/none5234/BeduSocial/1.0.0)
+
+## Postman Collection
+[Consultas](https://documenter.getpostman.com/view/6751780/UUxxhoQs#intro)
 
 ## Estructura de las carpetas del proyecto
 
