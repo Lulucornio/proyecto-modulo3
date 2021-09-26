@@ -9,7 +9,7 @@ function createUser(req,res,next){ // function to create user, it will iterate a
     }).catch(next)
 }
 
-function getUser(req,res,next){
+/* function getUser(req,res,next){
   if(req.params.id){
     User.findById(req.params.id) 
       .then(user =>{
@@ -24,6 +24,73 @@ function getUser(req,res,next){
       .catch(next)
   }
 }
+ */
+
+function getUser(req, res, next){ //OK
+    if(req.params.id){
+        User.findById(req.params.id) 
+          .then(user =>{
+              res.send(user)
+          }).catch(next)
+    }
+    else {
+        User.find()
+        .then(user=>{res.send(user)}).catch(next)
+        }
+}
+
+
+function getUserbyField(req, res, next){
+    const query = req.query;
+     if(query) {
+        const name = query.name
+        const lastName= query.lastName
+        const email= query.email
+        const username= query.username
+            if(query.name){
+                User.aggregate([       
+                    {
+                        '$match': {
+                            'name' : name
+                        }
+                    }
+                ]).then(r => {res.status(200).send(r)}).catch(next);
+            }
+            else if(query.lastName){
+                User.aggregate([       
+                    {
+                        '$match': {
+                            'lastName' : lastName
+                        }
+                    }
+                ]).then(r => {res.status(200).send(r)}).catch(next);
+            }
+            else if(query.username){
+                User.aggregate([       
+                    {
+                        '$match': {
+                            'username' : username
+                        }
+                    }
+                ]).then(r => {res.status(200).send(r)}).catch(next);
+            }
+            else if(query.email){
+                User.aggregate([       
+                    {
+                        '$match': {
+                            'email' : email
+                        }
+                    }
+                ]).then(r => {res.status(200).send(r)}).catch(next);
+            }
+        }
+}
+
+
+
+
+
+
 
 function updateUser(req, res, next) { 
   User.findById(req.params.id)
@@ -65,6 +132,7 @@ function deleteUser(req, res, next) {
 module.exports={ // defining the functions we have
     createUser,
     getUser,
+    getUserbyField,
     deleteUser,
     updateUser    
 }
