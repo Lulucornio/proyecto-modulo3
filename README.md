@@ -17,7 +17,7 @@ Nuestro proyecto consiste en desarrollar un sistema con la temática de una red 
 “Las redes sociales son comunidades formadas por diferentes usuarios y organizaciones que se relacionan entre sí en plataformas de Internet.” Rosario Peiró (03 de octubre, 2017).
 Con esto en mente al momento de crear nuestro proyecto hemos establecido que las funcionalidades sean características que permitan cumplir con la finalidad de estas plataformas y que a la vez nos permitan implementar una API pues van de la mano en la manera que se necesita la información para su correcto funcionamiento.
 
-El proyecto toma la temática central de la comunidad Bedu. Se permite la creación de cuenta para nuevos usuarios, ingresar información que detalla su perfil como Username, Nombre, perfil de Github, descripción,  cursos tomados, El usuario una vez que tiene su cuenta más adelante tiene permitido actualizar su contraseña. Se contempla la existencia de un muro en el que se mira la actividad es decir las publicaciones de la comunidad de esta red social al poder mirar todas las publicaciones existentes, las publicaciones se pueden filtrar por tema, se permite crear publicaciones y dentro del perfil del usuario que hizo su publicación eliminarlas. Además se permite la búsqueda de personas lo cual lleva a desplegar los resultados para permitir seleccionar y acceder al perfil de las personas; cuando nos encontramos en el perfil de alguien podemos mirar su información incluido los cursos que ha tomado y tenemos la opción de seguir anónimamente a dicho usuario. Cabe mencionar que algunos campos están disponibles para elegir en base a las opciones que se han predefinido siendo el caso por ejemplo el tipo de usuario, la lista de cursos, los temas de las publicaciones, el avatar del perfil.
+El proyecto toma la temática central de la comunidad Bedu. Se permite la creación de cuenta para nuevos usuarios, ingresar información que detalla su perfil como Username, Nombre, perfil de Github, descripción,  cursos tomados. Una vez que tiene su cuenta, el usuario tiene permitido actualizar su contraseña. Se contempla la existencia de un muro en el que se mira la actividad, es decir, se pueden mirar las publicaciones existentes, y se pueden filtrar por tema, el usuario podrá crear, editar y eliminar sus propias publicaciones. Además se permite la búsqueda de personas, lo cual lleva a desplegar los resultados para permitir seleccionar y acceder al perfil de las personas; cuando nos encontramos en el perfil de alguien podemos ver su información, incluidos los cursos que ha tomado y tenemos la opción de seguir anónimamente a dicho usuario. Cabe mencionar que algunos campos están disponibles para elegir con base en las opciones que se han predefinido siendo el caso, por ejemplo, el tipo de usuario, la lista de cursos, los temas de las publicaciones, el avatar del perfil.
 
 
 ## Estructura del proyecto
@@ -28,31 +28,31 @@ Usuarios, Cursos, Publicaciones
 
 Contemplamos que las entidades tienen los siguientes atributos : 
 
-* Usuarios : Id,Username, Name, LastName, Email, Password, GithubUser, Type { }, Avatar { }, Cursos { }, Followers
+* Usuarios : Id, Username, Name, LastName, Email, Password, GithubUser, Type { }, Avatar { }, Cursos { }, Followers
 * Cursos: Id, Code, Name
 * Publicaciones : Id, Title, Description, Topic, Author
 
-#### Interacción de entidades
-Gracias a estas entidades y las características de la API se concluye con la formación de perfiles de usuario pues si bien no es una entidad concreta si es el resultado de toda la interacción dentro del sistema y una característica esencial de las redes sociales.
+#### Interacciones
+Con las entidades anteriores, se conformará el perfil del usuario, que si bien no es una entidad concreta, sí es el resultado de toda la interacción dentro del sistema y una característica esencial de las redes sociales.
 
-Observando el flujo del sistema en sí podemos ver la interacción entre :
+Observando el flujo del sistema podemos ver la interacción entre:
 
-* Usuarios(Entidad) - Perfiles(Resultado) : Pues los perfiles obtienen la información en base a sus usuarios, quienes pueblan la entidad (es dependiente de)
+* Usuarios(Entidad) - Perfiles(Resultado) : Los perfiles obtienen la información con base en sus usuarios (es dependiente de)
 
-* Cursos - Usuarios : Ya que los  usuarios son quienes mencionan que cursos han tomado
+* Cursos - Usuarios : Los usuarios son quienes mencionan qué cursos han tomado
 
-* Usuarios - Publicaciones : Los usuarios tienen la capacidad de hacer y borrar publicaciones además de mirarlas
+* Usuarios - Publicaciones : Los usuarios tienen la capacidad crear, ver, modificar y eliminar publicaciones.
 
-* Publicaciones - Perfiles : Los perfiles (entre otra información) tienen publicaciones 
+* Publicaciones - Perfiles : Los perfiles tienen publicaciones 
 
-* Usuarios - Usuarios : Los usuarios pueden dar follow anónimo a otros usuarios y enterarse dentro de su perfil de la información que hayan registrado como los cursos y su cuenta de Github
+* Usuarios - Usuarios : Los usuarios pueden dar follow anónimo a otros usuarios y enterarse dentro de su perfil de la información que hayan registrado, como los cursos y su cuenta de Github.
 
 ### Servicios
 * Usuario: Get, Post, Put ( para el campo Password y algunos datos concretos)
 
-* Cursos  : Get
+* Cursos  : Get (Estarán predefinidos, por lo que no se podrán agregar, editar ni eliminar)
 
-* Publicaciones : Get , Post, Delete
+* Publicaciones : Get , Post, Delete, Put
 
 
 
@@ -60,14 +60,14 @@ Observando el flujo del sistema en sí podemos ver la interacción entre :
  1. Como nuevo usuario quiero registrarme en la red social para tener un perfil y acceder 
  2. Como usuario existente quiero acceder a la red social
  3. Como usuario quiero elegir un avatar (dentro de los que se muestran disponibles en la red social) en mi perfil
- 4. Como usuario quiero agregar una descripción en mi biografía
- 5. Como usuario quiero agregar cursos (de la lista) que he tomado
+ 4. Como usuario quiero agregar una descripción en mi perfil
+ 5. Como usuario quiero agregar cursos (de la lista disponible) que he tomado
  6. Como usuario quiero actualizar cursos que he tomado
  7. Como usuario quiero acceder para mirar el muro con las publicaciones realizadas por los demás usuarios
  8. Como usuario quiero acceder al muro para agregar una publicación 
  9. Como usuario quiero acceder al muro para buscar personas
  10. Como usuario quiero hacer click al resultado de búsqueda de persona para mirar su perfil
- 11. Como usuario quiero dar follow(anónimo) a una persona dentro de su perfil
+ 11. Como usuario quiero dar follow (anónimo) a una persona dentro de su perfil
  12. Como usuario quiero acceder a mi perfil para editar los campos permitidos
  13. Como usuario quiero eliminar mi publicacion
  14. Como usuario quiero acceder al muro para filtrar publicaciones por cantidad seleccionada
@@ -89,10 +89,11 @@ Observando el flujo del sistema en sí podemos ver la interacción entre :
   - Agregar curso (a la lista de cursos tomados)
   - Eliminar curso (de la lista de cursos tomados)
  
-* Ver muro (todas las publicaciones)
+
 * Buscar persona
 * Mirar perfil externo
-* Dar follow (anonimo)
+* Dar follow (anónimo)
+* Ver muro (todas las publicaciones)
 * En el muro : Filtrar por tema de publicación
 * En el muro : Filtrar publicaciones por cantidad
 
@@ -107,12 +108,22 @@ Observando el flujo del sistema en sí podemos ver la interacción entre :
   
   
 ## Herramientas empleadas
+La API está desarrollada en **Node.js**. 
+El ODM a utilzar es **Mongoose**.
 
-En el proyecto utilizaremos Express para realizar el ruteo de la aplicación.
-Se hará uso de body-parser para facilitar a Express leer el cuerpo de la petición.
-Otra herramienta a utilizar es nodemon, ya que actualizará automáticamente el servidor a medida que vamos realizando cambios.
+En el proyecto utilizaremos las siguientes dependencias:
+**Express** para realizar el ruteo de la aplicación.
+**body-parser** para facilitar a Express leer el cuerpo de la petición.
+**crypto** para el cifrado de las contraseñas utilizando un hash.
+**express-jwt** para el uso del estándar de creación de tokens JWT.
+**mongoose** para la conexión con la base de datos que estará en **MongoDB**.
+**mongoose-unique-validator** para validad que los campos marcados como únicos, en el modelo de la entidad, no se repitan en la base de datos.
+**passport** para la autenticación.
+Durante el desarrollo se utilizó **Nodemon**, ya que actualiza automáticamente el servidor a medida que vamos realizando cambios.
 
-Para la base de datos se utilizará MongoDB.
+## Enlace a la API en Heroku
+
+## Swagger
 
 ## Estructura de las carpetas del proyecto
 
@@ -151,7 +162,7 @@ Para la instalación de las principales dependencias se deberá ejecutar el sigu
 ```
 npm i
 ```
-Para utilizar nodemon, este se deberá instalar de forma global
+Para utilizar nodemon, este se deberá instalar de forma global (nodemon solo se utiliza durante la fase de desarrollo)
 
 ```
 npm install -g nodemon
