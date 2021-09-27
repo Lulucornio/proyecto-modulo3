@@ -130,6 +130,10 @@ Durante el desarrollo se utilizó **Nodemon**, ya que actualiza automáticamente
 ## Postman Collection
 [Consultas](https://documenter.getpostman.com/view/6751780/UUxxhoQs#intro)
 
+## Prototipos de interfaz de usuario
+[Prototipos](https://github.com/Lulucornio/proyecto-modulo3/blob/master/images/Bedu%20(1).pdf)
+
+
 ## Estructura de las carpetas del proyecto
 
 ```bash
